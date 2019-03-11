@@ -1,28 +1,21 @@
 <style scoped>
-  .row {
-    padding: 1rem 2rem;
-  }
-
   .profile-wrapper {
     border: 0.1rem solid rgb(238, 238, 238);
     border-radius: 1rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     margin: 0 auto;
     max-width: 60rem;
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
   button {
-    background-color: blue;
+    background-color: #206177;
     border-radius: 1rem;
     color: white;
     font-size: 1.8rem;
     height: 4rem;
     margin: 1rem auto 0;
     width: 9rem
-  }
-
-  button:hover {
-    background-color: lightskyblue;
   }
 
   .required-field {
@@ -113,7 +106,7 @@
 
 <script>
   export default {
-    name: 'profile',
+    name: 'Profile',
 
     // data() {
     //   return {
@@ -131,7 +124,6 @@
 
     methods: {
       validateFields() {
-        console.log('validate stuff');
         this.$validator.validate();
       },
     },
