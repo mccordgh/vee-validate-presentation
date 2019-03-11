@@ -43,6 +43,13 @@
   .text-left {
     text-align: left;
   }
+
+  .form-error {
+    color: red;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+  }
 </style>
 
 <template>
@@ -80,7 +87,7 @@
 
     data() {
       return {
-        showExamples: true,
+        showExamples: false,
       };
     },
 

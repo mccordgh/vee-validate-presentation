@@ -46,11 +46,13 @@
         <div class="col-6">
           <label for="firstName">First Name<span class="required-field">*</span></label>
           <input v-validate="'required'" id="firstName" name="firstName" type="text">
+          <p class="form-error text-left">{{ errors.first('firstName') }}</p>
         </div>
 
         <div class="col-6">
           <label for="lastName">Last Name<span class="required-field">*</span></label>
           <input v-validate="'required'" id="lastName" name="lastName" type="text">
+          <p class="form-error text-left">{{ errors.first('lastName') }}</p>
         </div>
       </div>
 
@@ -58,11 +60,13 @@
         <div class="col-6">
           <label for="phone">Phone Number<span class="required-field">*</span></label>
           <input v-validate="'required'" id="phone" name="phone" type="tel">
+          <p class="form-error text-left">{{ errors.first('phone') }}</p>
         </div>
 
         <div class="col-6">
           <label for="email">Email<span class="required-field">*</span></label>
           <input v-validate="'required'" id="email" name="email" type="email">
+          <p class="form-error text-left">{{ errors.first('email') }}</p>
         </div>
       </div>
 
@@ -70,11 +74,13 @@
         <div class="col-6">
           <label for="addressOne">Address 1<span class="required-field">*</span></label>
           <input v-validate="'required'" id="addressOne" name="addressOne" type="text">
+          <p class="form-error text-left">{{ errors.first('addressOne') }}</p>
         </div>
 
         <div class="col-6">
           <label for="addressTwo">Address 2</label>
           <input v-validate="''" id="addressTwo" name="addressTwo" type="text">
+          <p class="form-error text-left">{{ errors.first('addressTwo') }}</p>
         </div>
       </div>
 
@@ -82,11 +88,13 @@
         <div class="col-6">
           <label for="city">City<span class="required-field">*</span></label>
           <input v-validate="'required'" id="city" name="city" type="text">
+          <p class="form-error text-left">{{ errors.first('city') }}</p>
         </div>
 
         <div class="col-6">
           <label for="state">State<span class="required-field">*</span></label>
           <input v-validate="'required'" id="state" name="state" type="text">
+          <p class="form-error text-left">{{ errors.first('state') }}</p>
         </div>
       </div>
 
@@ -94,6 +102,7 @@
         <div class="col-6">
           <label for="zip">Zip<span class="required-field">*</span></label>
           <input v-validate="'required'" id="zip" name="zip" type="text">
+          <p class="form-error text-left">{{ errors.first('zip') }}</p>
         </div>
       </div>
     </div>
@@ -124,7 +133,7 @@
 
     methods: {
       validateFields() {
-        this.$validator.validate();
+        this.$validator.validateAll();
       },
     },
   };

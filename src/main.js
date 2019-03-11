@@ -5,7 +5,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, { events: '' });
 
 new Vue({
   render: h => h(App),
