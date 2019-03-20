@@ -184,6 +184,21 @@
 
           <p class="error-message text-left">{{ errors.first('zip') }}</p>
         </div>
+
+        <div class="col-6">
+          <label for="power-level">Power Level<span class="required-field">*</span></label>
+
+          <input
+            v-validate="'required|numeric|max_value:9000'"
+            id="power-level"
+            name="powerLevel"
+            data-vv-as="Power Level"
+            v-model="powerLevel"
+            type="number"
+          >
+
+          <p class="error-message text-left">{{ errors.first('powerLevel') }}</p>
+        </div>
       </div>
     </div>
 
@@ -207,6 +222,7 @@
         addressTwo: '',
         city: '',
         state: '',
+        powerLevel: 1,
         zip: '',
       };
     },
