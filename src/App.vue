@@ -47,6 +47,7 @@
   .error-message {
     bottom: -2rem;
     color: red;
+    font-size: 0.8rem;
     font-weight: bold;
     margin: 0;
     position: absolute;

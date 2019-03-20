@@ -47,7 +47,7 @@
           <label for="firstName">First Name<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|alpha_spaces'"
             id="firstName"
             name="firstName"
             data-vv-as="First Name"
@@ -61,7 +61,7 @@
           <label for="lastName">Last Name<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|alpha_spaces'"
             id="lastName"
             name="lastName"
             data-vv-as="Last Name"
@@ -78,7 +78,7 @@
           <label for="phone">Phone Number<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|numeric|length:10'"
             id="phone"
             name="phone"
             data-vv-as="Phone Number"
@@ -93,7 +93,7 @@
           <label for="email">Email<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|email'"
             id="email"
             name="email"
             data-vv-as="Email"
@@ -139,7 +139,7 @@
           <label for="city">City<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|alpha_spaces'"
             id="city"
             name="city"
             data-vv-as="City"
@@ -174,7 +174,7 @@
           <label for="zip">Zip Code<span class="required-field">*</span></label>
 
           <input
-            v-validate="'required'"
+            v-validate="'required|numeric|length:5'"
             id="zip"
             name="zip"
             data-vv-as="Zip Code"

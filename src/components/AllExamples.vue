@@ -134,7 +134,7 @@
         this.$validator.validate()
           .then(() => {
             if (!this.errors.items.length) {
-              this.$parent.successEvent()
+              this.$parent.successEvent();
             }
           });
       },
