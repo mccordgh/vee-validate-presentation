@@ -1,74 +1,30 @@
-<style scoped>
-  .all-examples-wrapper {
-    border: 0.1rem solid rgb(238, 238, 238);
-    border-radius: 1rem;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    margin: 0 auto;
-    max-width: 60rem;
-    padding: 1.5rem;
-  }
-
-  button {
-    background-color: #206177;
-    border-radius: 1rem;
-    color: white;
-    font-size: 1.8rem;
-    height: 4rem;
-    margin: 1rem auto 0;
-    width: 9rem
-  }
-
-  .required-field {
-    color: red;
-  }
-
-  label {
-    font-size: 1.6rem;
-    font-weight: bolder;
-    text-align: left;
-    width: 100%;
-  }
-
-  .form-item {
-    border-color: rgb(238, 238, 238);
-    border-radius: 0.4rem;
-    font-size: 1.4rem;
-    height: 3rem;
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .form-checkbox {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  .form-checkbox-text {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-left: 0.6rem;
-  }
-
-  .group-wrapper {
-    display: inline-block;
-    margin-left: 0.6rem;
-  }
-</style>
-
 <template>
   <div>
     <div class="all-examples-wrapper">
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 form-block">
           <label>First Name<span class="required-field">*</span></label>
-          <input v-validate="'required'" name="firstName" type="text" class="form-item">
+
+          <input
+            v-validate="'required'"
+            name="firstName"
+            data-vv-as="First Name"
+            type="text"
+            class="form-item"
+          >
+
+          <p class="error-message">
+            {{ errors.first('firstName') }}
+          </p>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 form-block">
           <label>Favorite Food</label>
+
           <select
             class="form-item"
             name="favoriteFood"
+            data-vv-as="Favorite Food"
             v-validate="'required'"
             v-model="favoriteFood"
           >
@@ -77,31 +33,41 @@
             <option>Smoothies</option>
             <option>Tacos</option>
           </select>
+
+          <p class="error-message">
+            {{ errors.first('favoriteFood') }}
+          </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-6 text-left">
-          <label>Remember Me?</label>
+        <div class="col-6 text-left form-block">
+          <label>Do You Agree To Zee Terms?</label>
 
           <input
             type="checkbox"
-            name="rememberMe"
+            name="doYouAgree"
+            data-vv-as="Do You Agree?"
             v-validate="'required'"
-            v-model="rememberMe"
+            v-model="doYouAgree"
             class="form-item form-checkbox"
           >
 
-          <span class="form-checkbox-text">Remember me!</span>
+          <span class="form-checkbox-text">I Agreez!</span>
+
+          <p class="error-message">
+            {{ errors.first('doYouAgree') }}
+          </p>
         </div>
 
-        <div class="col-6 text-left">
+        <div class="col-6 text-left form-block">
           <label>Multiple Options</label>
 
           <div v-for="(option, index) in options" :key="index" class="group-wrapper">
             <input
               type="checkbox"
               name="options"
+              data-vv-as="Multiple Options"
               :value="option"
               v-validate="'required'"
               v-model="selectedOptions"
@@ -110,17 +76,22 @@
 
             <span class="form-checkbox-text">{{ option }}</span>
           </div>
+
+          <p class="error-message">
+            {{ errors.first('options') }}
+          </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-6 text-left">
+        <div class="col-6 text-left form-block">
           <label>Yes or No</label>
 
           <div v-for="(option, index) in radioOptions" :key="index" class="group-wrapper">
             <input
               type="radio"
               name="yesOrNo"
+              data-vv-as="Yes or No"
               :value="option"
               v-validate="'required'"
               v-model="yesOrNo"
@@ -129,6 +100,10 @@
 
             <span class="form-checkbox-text">{{ option }}</span>
           </div>
+
+          <p class="error-message">
+            {{ errors.first('yesOrNo') }}
+          </p>
         </div>
       </div>
     </div>
@@ -145,7 +120,7 @@
 
     data() {
       return {
-        rememberMe: true,
+        doYouAgree: false,
         favoriteFood: '',
         options: ['Option A', 'Option B', 'Option C'],
         radioOptions: ['Yes', 'No'],
@@ -156,7 +131,12 @@
 
     methods: {
       validateFields() {
-        this.$validator.validate();
+        this.$validator.validate()
+          .then(() => {
+            if (!this.errors.items.length) {
+              this.$parent.successEvent()
+            }
+          });
       },
     },
   };

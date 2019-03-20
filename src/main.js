@@ -5,7 +5,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.use(VeeValidate, { events: '' });
+Vue.use(VeeValidate, { events: 'blur' });
 
 new Vue({
   render: h => h(App),
